@@ -1,23 +1,23 @@
 #include <unistd.h>
 #include <stdarg.h>
-#include "main.h"
 
 /**
 * _putchar - Write a character to stdout.
 * @c: The character to be written.
+*
 * Return: 1 (success) or -1 (error).
 */
 int _putchar(char c)
 {
-return write(1, &c, 1);
+return (write(1, &c, 1));
 }
 
 /**
 * _printf - A streamlined version of the printf function.
-* @format: A string that contains format specifiers.
-* @...: A varying quantity of arguments.
+* @format: A character string that includes format placeholders.
+* @...: A flexible number of arguments.
 *
-* Return: The quantity of characters outputted
+* Return: The number of characters outputed
 */
 int _printf(const char *format, ...)
 {
@@ -25,6 +25,7 @@ va_list args;
 int tally = 0;
 const char *format_pos = format;
 va_start(args, format);
+
 while (*format_pos != '\0')
 {
 if (*format_pos == '%')
@@ -42,7 +43,7 @@ break;
 case 's':
 {
 const char *s = va_arg(args, const char *);
-while (*s != '\0')
+while (*s)
 {
 tally += _putchar(*s);
 s++;
@@ -50,10 +51,8 @@ s++;
 break;
 }
 case '%':
-{
 tally += _putchar('%');
 break;
-}
 default:
 tally += _putchar('%');
 tally += _putchar(*format_pos);
@@ -64,7 +63,6 @@ else
 {
 tally += _putchar(*format_pos);
 }
-
 format_pos++;
 }
 
