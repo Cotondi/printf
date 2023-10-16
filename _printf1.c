@@ -1,43 +1,74 @@
-#include <stdio.h>
+#include <unistd.h>
 #include <stdarg.h>
 #include "main.h"
-#include <unistd.h>
 
-int _printf(const char *format, ...);
+/**
+* _putchar - Write a character to stdout.
+* @c: The character to be written.
+* Return: 1 (success) or -1 (error).
+*/
+int _putchar(char c)
 {
-va_list arg;
-va_start(arg, format);
-char_tally = 0;
-int x;
-for (x = 0; format[x] != '\0'; x++)
+return write(1, &c, 1);
+}
+
+/**
+* _printf - A simplified version of the printf function.
+* @format: A string that contains format specifiers.
+* @...: Variable number of arguments.
+*
+* Return: The number of characters printed.
+*/
+int _printf(const char *format, ...)
 {
-if (format[x] == '\0')
+va_list args;
+int tally = 0;
+const char *format_pos = format;
+va_start(args, format);
+while (*format_pos != '\0')
 {
+if (*format_pos == '%')
+{
+format_pos++;
+
+switch (*format_pos)
+{
+case 'c':
+{
+int c = va_arg(args, int);
+tally += _putchar(c);
 break;
 }
-switch (format(x));
-case "character"
+case 's':
 {
-char ch = va_arg(agr, int);
-write(1, &ch, 1);
-char_tally++;
+const char *s = va_arg(args, const char *);
+while (*s != '\0')
+{
+tally += _putchar(*s);
+s++;
+}
 break;
 }
-case "string"
+case '%':
 {
-char *strg = va_arg(arg, int);
-write(1, strg, 1);
-char_tally++;
+tally += _putchar('%');
 break;
 }
-case "%"
-{
-write(1, "%", 1);
-char_tally++;
+default:
+tally += _putchar('%');
+tally += _putchar(*format_pos);
 break;
 }
-va_end(arg);
-return (char_tally);
 }
+else
+{
+tally += _putchar(*format_pos);
 }
+
+format_pos++;
+}
+
+va_end(args);
+
+return (tally);
 }
