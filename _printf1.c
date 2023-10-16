@@ -13,11 +13,11 @@ return write(1, &c, 1);
 }
 
 /**
-* _printf - A simplified version of the printf function.
+* _printf - A streamlined version of the printf function.
 * @format: A string that contains format specifiers.
-* @...: Variable number of arguments.
+* @...: A varying quantity of arguments.
 *
-* Return: The number of characters printed.
+* Return: The quantity of characters outputted
 */
 int _printf(const char *format, ...)
 {
