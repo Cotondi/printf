@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include <stdarg.h>
+#include "main.h"
 
 /**
 * _putchar - Write a character to stdout.
@@ -68,5 +69,5 @@ format_pos++;
 
 va_end(args);
 
-return (tally);
+return tally;
 }
