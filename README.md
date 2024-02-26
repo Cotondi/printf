@@ -1,12 +1,9 @@
+					# PRINTF PROJECT #
 
-PRINTF
-0. I'm not going anywhere. You can print that wherever you want to. I'm here and I'm a Spur for life
-=======
-					0x11. C - printf
-					COLLABORATION PROJECT
 
-					Requirements
-General
+
+## Requirements ##
+## General ##
 Allowed editors: vi, vim, emacs
 All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
 All your files should end with a new line
@@ -31,7 +28,12 @@ va_end (man 3 va_end)
 va_copy (man 3 va_copy)
 va_arg (man 3 va_arg)
 
+### NB ###
+1. The project requires knowledge in format scripts such as:-
+``` printf("My name is %s", mucheru);```
 
+2. Variadic functions.
+   These are functions with two or more parameters and recieve two or more arguments
 
 
 						Compilation
